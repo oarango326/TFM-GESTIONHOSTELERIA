@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GlobalConstants} from './models/globalConstants';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'spa01';
+  title = GlobalConstants.appTittle;
 }

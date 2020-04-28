@@ -1,0 +1,74 @@
+
+<div class="container">
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Local ID</label>
+            <div class="col-sm">
+                <input type="text"
+                       class="form-control"
+                       id="id"
+                       name="localId"
+                       placeholder="localId"
+                       formControlName="localId"
+                       [(ngModel)]="local.localId"
+                         readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm">
+                <input type="text"
+                       class="form-control"
+                       id="nombre"
+                       name="nombreLocal"
+                       placeholder="Nombre"
+                       formControlName="nombreLocal"
+                       [class.is-invalid]="nombreNovalido"
+                        [(ngModel)]="local.nombreLocal">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Direccion</label>
+            <div class="col-sm">
+                <input type="text"
+                       class="form-control"
+                       id="direccion"
+                       name="direccionLocal"
+                       placeholder="Direccion"
+                       formControlName="direccionLocal"
+                       [class.is-invalid]=""
+                       [(ngModel)]="local.direccionLocal">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Telefono</label>
+            <div class="col-sm">
+                <input type="text"
+                       class="form-control"
+                       id="telefono"
+                       name="telefonoLocal"
+                       placeholder="telefono"
+                       formControlName="telefonoLocal"
+                       [class.is-invalid]=""
+                       [(ngModel)]="local.telefonoLocal">
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-primary">
+                <i class="fa fa-spinner fa-lg p-2"></i>
+                Actualizar
+            </button>
+        </div>
+    </form>
+
+   <!-- <hr>
+    <pre>
+        estado del formulario : {{form.valid}}
+        <br>
+        Estatus:  {{form.status}}
+    </pre>
+    <pre>
+    {{form.value| json}}
+    </pre>-->
+
+</div>

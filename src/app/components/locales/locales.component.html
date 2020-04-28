@@ -1,0 +1,58 @@
+<div *ngIf="!muestraNuevo || hasRoute()==='/locales'" >
+    <div class="align-bottom" >
+        <div class="row  d-flex justify-content-between">
+            <h2 class="ml-5">Locales</h2>
+            <a class="btn btn-outline-primary  mr-5 mb-2" routerLink="nuevo-local" (click)="nuevoLocal()">
+                <i class="fa fa-plus-square fa-sm p-2"></i>Nuevo Local</a>
+        </div>
+    </div>
+    <table class="table table-striped " *ngIf="locales.length > 0">
+    <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col"></th>
+            </tr>
+    </thead>
+        <tbody>
+        <tr *ngFor="let local of locales; let i = index">
+            <td><a >{{ i+1}}</a></td>
+            <td><a >{{ local.nombreLocal}}</a></td>
+            <td>{{local.direccionLocal}}</td>
+            <td>{{local.telefonoLocal}}</td>
+            <td>
+                <div class="justify-content-center">
+                    <a class="btn btn-outline-secondary m-1" [routerLink]="['/locales', local.localId]"><i class="fa fa-cog fa-sm"></i></a>
+                    <button class="btn btn-outline-danger m-1"  type="button" (click)="deleteLocal(local, i)" ><i class="fa fa-trash-o fa-sm"></i></button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-warning text-center mt-3" *ngIf="!cargando && locales.length===0">
+        <h4 class="alert-heading">No hay registros</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+    <div class="alert alert-info text-center mt-3" *ngIf="cargando">
+        <h4 class="alert-heading">Cargando</h4>
+        <p>
+            <i class="fa fa-spinner fa-spin fa-3x"></i>
+        </p>
+        <p class="mb-0">
+            Espere por favor
+        </p>
+    </div>
+
+
+</div>
+
+
+
+<div>
+    <app-nuevo-local *ngIf="muestraNuevo" (nuevoLocal)="nuevoLocal( )" (recargaLocales)="getLocales()"></app-nuevo-local>
+</div>

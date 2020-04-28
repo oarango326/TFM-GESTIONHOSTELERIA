@@ -1,0 +1,89 @@
+<div>
+    <div [ngClass]="'mb-3'" class="justify-content-between d-flex ">
+        <h2>Nuevo Local</h2>
+        <button class="btn btn-outline-danger" routerLink="/locales" (click)="volver()">
+            <i class="fa fa-arrow-left fa-lg p-2"></i>
+            Volver
+        </button>
+    </div>
+    <form autocomplete="off" [formGroup]="form"  (ngSubmit)="guardar()">
+        <div class="justify-content-center">
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="form-control"
+                           id="nombre"
+                           name="nombreLocal"
+                           placeholder="Nombre"
+                           formControlName="nombreLocal"
+                            [class.is-invalid]="nombreNovalido">
+                    <small *ngIf="nombreNovalido" class="text-danger">Ingrese 5 letras</small>
+                </div>
+            </div>
+            <div class="form-group row" >
+                <label for="" class="col-sm-2 col-form-label">Direccion</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="form-control "
+                           id="direccion"
+                           name="direccionLocal"
+                           placeholder="Direccion"
+                           formControlName="direccionLocal">
+                </div>
+             <!--   <div class="col-sm">
+                    <input type="text"
+                           class="form-control"
+                           id="municipio"
+                           name="municipip"
+                           placeholder="Municipio"
+                           formControlName="municipio"
+                           [class.is-invalid]="nombreNovalido">
+                </div>-->
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">Telefono</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="form-control"
+                           id="telefono"
+                           name="telefonoLocal"
+                           placeholder="Telefono"
+                           formControlName="telefonoLocal">
+                </div>
+            </div>
+            <!--<div class="form-group row">
+                <label for="lblcp" class="col-sm-2 col-form-label">Codigo Postal</label>
+                <div class="col-xs-12 col-sm-4 col-lg-4">
+                    <input type="text"
+                           class="form-control"
+                           id="codigoPostal"
+                           name="codigoPostal"
+                           placeholder="CP"
+                           formControlName="codigoPostal"
+                           [class.is-invalid]="nombreNovalido">
+                </div>
+            </div>-->
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-primary">
+                <i class="fa fa-save fa-lg p-2"></i>
+                Guardar
+            </button>
+        </div>
+    </form>
+
+<!--    <hr>
+    <pre>
+        estado del formulario : {{form.valid}}
+        <br>
+        Estatus:  {{form.status}}
+    </pre>
+    <pre>
+    {{form.value| json}}
+    </pre>-->
+
+</div>
+
+
+

@@ -27,7 +27,7 @@ export class MesasComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
     this.update = false;
-    // this.mesa = new MesaModel();
+    this.cargando = true;
   }
   ngOnInit(): void {
   }
@@ -50,7 +50,8 @@ export class MesasComponent implements OnInit {
       showConfirmButton: true,
       showCancelButton: true
     }).then(resp => {
-          if (resp.value) {
+        Swal.showLoading();
+        if (resp.value) {
             this.mesasService.deleteMesa(mesa)
                 .subscribe((request: any) => {
                     this.mesas.splice(i, 1);
@@ -75,15 +76,38 @@ export class MesasComponent implements OnInit {
           if ( !forma.invalid){
               this.mesasService.addMesa(forma, this.local.id)
                   .subscribe(resp => {
+                      Swal.fire({
+                          title: 'Crear Mesa ',
+                          text: 'La Mesa Ha sido Creada',
+                          icon: 'success'
+                      });
                       this.getMesas(this.local.id);
-                  }, ( error )  => console.log(error.error));
+                  }, ( error: any )  => {
+                      console.log(this.update);
+                      Swal.fire({
+                          title: 'Crear Mesa ',
+                          text: error.error.message.toUpperCase(),
+                          icon: 'error'
+                      });
+                  });
           }
-      }
-      if ( !forma.invalid){
-           this.mesasService.updateMesa(forma, this.local.id)
-              .subscribe(request => {
-                  this.getMesas(this.local.id);
-              }, ( error )  => console.log(error.error));
+      }else{
+          if ( !forma.invalid){
+              this.mesasService.updateMesa(forma, this.local.id)
+                  .subscribe(request => {
+                      this.update = false;
+                      this.getMesas(this.local.id);
+                  }, ( error )  => {
+                      console.log(this.update);
+                      this.update = false;
+                      Swal.fire({
+                              title: 'Actualizar Mesa ',
+                              text: error.error.message.toUpperCase(),
+                              icon: 'error'
+                          }
+                      );
+                  });
+          }
       }
   }
   open(content, mesa: MesaModel, update?: boolean) {

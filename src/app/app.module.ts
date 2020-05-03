@@ -10,7 +10,8 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 // Services
 import {LocalesService} from './services/locales/locales.service';
 import {MesasService} from './services/mesas/mesas.service';
-
+import {CajasService} from './services/cajas/cajas.service';
+import {InsumosService} from './services/insumos/insumos.service';
 // Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/share/navbar/navbar.component';
@@ -23,8 +24,11 @@ import { CajasComponent } from './components/cajas/cajas.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { NuevoLocalComponent } from './components/nuevo-local/nuevo-local.component';
 import { InfoLocalComponent } from './components/info-local/info-local.component';
-import { MesaAddModalComponent } from './components/modals/mesa-add-modal/mesa-add-modal.component';
-
+import { InsumosComponent } from './components/insumos/insumos.component';
+import { LoadingComponent } from './components/share/loading/loading.component';
+import { NorecordsComponent } from './components/share/norecords/norecords.component';
+import { InsumoComponent } from './components/insumo/insumo.component';
+import { ErrorpageComponent } from './components/share/errorpage/errorpage.component';
 
 
 @NgModule({
@@ -40,7 +44,11 @@ import { MesaAddModalComponent } from './components/modals/mesa-add-modal/mesa-a
     ReservasComponent,
     NuevoLocalComponent,
     InfoLocalComponent,
-    MesaAddModalComponent
+    InsumosComponent,
+    LoadingComponent,
+    NorecordsComponent,
+    InsumoComponent,
+    ErrorpageComponent,
   ],
     imports: [
         BrowserModule,
@@ -52,7 +60,9 @@ import { MesaAddModalComponent } from './components/modals/mesa-add-modal/mesa-a
     ],
   providers: [
       LocalesService,
-      MesasService
+      MesasService,
+      CajasService,
+      InsumosService
   ],
   bootstrap: [AppComponent]
 })

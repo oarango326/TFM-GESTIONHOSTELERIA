@@ -1,9 +1,14 @@
 <div *ngIf="!muestraNuevo || hasRoute()==='/locales'" >
     <div class="align-bottom" >
         <div class="row  d-flex justify-content-between">
-            <h2 class="ml-5">Locales</h2>
-            <a class="btn btn-outline-primary  mr-5 mb-2" routerLink="nuevo-local" (click)="nuevoLocal()">
-                <i class="fa fa-plus-square fa-sm p-2"></i>Nuevo Local</a>
+            <div class="col-6">
+                <h2 class="ml-5">Locales</h2>
+            </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-outline-primary  mr-5 mb-2" routerLink="nuevo-local" (click)="nuevoLocal()" ngbTooltip="Nuevo local">
+                    <i class="fa fa-plus-square fa-sm p-2"></i>Nuevo</a>
+            </div>
+
         </div>
     </div>
     <table class="table table-striped " *ngIf="locales.length > 0">
@@ -23,30 +28,16 @@
             <td>{{local.direccionLocal}}</td>
             <td>{{local.telefonoLocal}}</td>
             <td>
-                <div class="justify-content-center">
-                    <a class="btn btn-outline-secondary m-1" [routerLink]="['/locales', local.localId]"><i class="fa fa-cog fa-sm"></i></a>
-                    <button class="btn btn-outline-danger m-1"  type="button" (click)="deleteLocal(local, i)" ><i class="fa fa-trash-o fa-sm"></i></button>
+                <div class="text-center">
+                    <a class="btn btn-outline-secondary m-1" [routerLink]="['/locales', local.localId]" ngbTooltip="Configurar"><i class="fa fa-cog fa-sm"></i></a>
+                    <button class="btn btn-outline-danger m-1"  type="button" (click)="deleteLocal(local, i)" ngbTooltip="Eliminar"><i class="fa fa-trash-o fa-sm"></i></button>
                 </div>
             </td>
         </tr>
         </tbody>
     </table>
-    <div class="alert alert-warning text-center mt-3" *ngIf="!cargando && locales.length===0">
-        <h4 class="alert-heading">No hay registros</h4>
-        <p>
-            <i class="fa fa-exclamation fa-2x"></i>
-        </p>
-    </div>
-
-    <div class="alert alert-info text-center mt-3" *ngIf="cargando">
-        <h4 class="alert-heading">Cargando</h4>
-        <p>
-            <i class="fa fa-spinner fa-spin fa-3x"></i>
-        </p>
-        <p class="mb-0">
-            Espere por favor
-        </p>
-    </div>
+    <app-loading  *ngIf="cargando"></app-loading>
+    <app-norecords *ngIf="!cargando && locales.length===0"></app-norecords>
 
 
 </div>

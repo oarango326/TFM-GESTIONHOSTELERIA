@@ -2,7 +2,7 @@
 <div class="container">
     <form autocomplete="off" [formGroup]="form" (ngSubmit)="guardar()">
         <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Local ID</label>
+            <label class="col-sm-2 col-form-label">Local ID</label>
             <div class="col-sm">
                 <input type="text"
                        class="form-control"
@@ -10,12 +10,12 @@
                        name="localId"
                        placeholder="localId"
                        formControlName="localId"
-                       [(ngModel)]="local.localId"
+
                          readonly>
             </div>
         </div>
         <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Nombre</label>
+            <label class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm">
                 <input type="text"
                        class="form-control"
@@ -24,11 +24,11 @@
                        placeholder="Nombre"
                        formControlName="nombreLocal"
                        [class.is-invalid]="nombreNovalido"
-                        [(ngModel)]="local.nombreLocal">
+                  >
             </div>
         </div>
         <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Direccion</label>
+            <label class="col-sm-2 col-form-label">Direccion</label>
             <div class="col-sm">
                 <input type="text"
                        class="form-control"
@@ -36,12 +36,12 @@
                        name="direccionLocal"
                        placeholder="Direccion"
                        formControlName="direccionLocal"
-                       [class.is-invalid]=""
-                       [(ngModel)]="local.direccionLocal">
+                       [class.is-invalid]="direccionNovalido"
+                      >
             </div>
         </div>
         <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Telefono</label>
+            <label  class="col-sm-2 col-form-label">Telefono</label>
             <div class="col-sm">
                 <input type="text"
                        class="form-control"
@@ -49,8 +49,8 @@
                        name="telefonoLocal"
                        placeholder="telefono"
                        formControlName="telefonoLocal"
-                       [class.is-invalid]=""
-                       [(ngModel)]="local.telefonoLocal">
+                       [class.is-invalid]="telefonoNovalido"
+                       >
             </div>
         </div>
         <div class="text-right">
